@@ -49,7 +49,7 @@ const ContactSection = () => {
     {
       icon: FiMapPin,
       title: 'آدرس',
-      value: 'تهران، خیابان ولیعصر',
+      value: 'مشهد، خیابان ولیعصر',
       link: '#'
     }
   ]

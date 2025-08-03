@@ -5,8 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import {
   FiPlay,
   FiPause,
-  FiSkipBack,
-  FiSkipForward,
+  FiRotateCcw,
+  FiRotateCw,
   FiVolume2,
   FiVolume1,
   FiVolumeX,
@@ -66,6 +66,7 @@ const MusicPlayer = ({ track, onClose }: MusicPlayerProps) => {
   const [isLiked, setIsLiked] = useState(false)
   const [isRepeat, setIsRepeat] = useState(false)
   const [isShuffle, setIsShuffle] = useState(false)
+  const [isDragging, setIsDragging] = useState(false);
 
   const audioRef = useRef<HTMLAudioElement>(null)
   const progressRef = useRef<HTMLDivElement>(null)
@@ -73,10 +74,10 @@ const MusicPlayer = ({ track, onClose }: MusicPlayerProps) => {
   const { tooltip, showTooltip, hideTooltip } = useTooltip();
 
   const handleTimeUpdate = useCallback(() => {
-    if (audioRef.current) {
+    if (audioRef.current && !isDragging) {
       setCurrentTime(audioRef.current.currentTime)
     }
-  }, [])
+  }, [isDragging])
 
   const handleLoadedMetadata = useCallback(() => {
     if (audioRef.current) {
@@ -137,6 +138,37 @@ const MusicPlayer = ({ track, onClose }: MusicPlayerProps) => {
       setCurrentTime(newTime)
     }
   }
+
+  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    setIsDragging(true);
+    handleProgressChange(e);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (isDragging) {
+      handleProgressChange(e);
+    }
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseLeave = () => {
+    setIsDragging(false);
+  };
+
+  const handleForward = () => {
+    if (audioRef.current) {
+      audioRef.current.currentTime += 5;
+    }
+  };
+
+  const handleBackward = () => {
+    if (audioRef.current) {
+      audioRef.current.currentTime -= 5;
+    }
+  };
 
   const formatTime = (seconds: number) => {
     if (isNaN(seconds)) return '0:00'
@@ -211,7 +243,10 @@ const MusicPlayer = ({ track, onClose }: MusicPlayerProps) => {
       <div className="mt-4">
         <div
           ref={progressRef}
-          onClick={handleProgressChange}
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseLeave}
           className="w-full h-1.5 bg-white/10 rounded-full cursor-pointer group relative"
         >
           <motion.div
@@ -241,11 +276,11 @@ const MusicPlayer = ({ track, onClose }: MusicPlayerProps) => {
         <div className="flex items-center gap-2">
           <motion.button
             whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}
-            onMouseEnter={() => showTooltip('قبلی')} onMouseLeave={hideTooltip}
-            className="p-2 text-gray-400 hover:text-white transition-colors disabled:opacity-50"
-            disabled
+            onClick={handleBackward}
+            onMouseEnter={() => showTooltip('۵ ثانیه عقب')} onMouseLeave={hideTooltip}
+            className="p-2 text-gray-400 hover:text-white transition-colors"
           >
-            <FiSkipBack className="text-2xl transform scale-x-[-1]" />
+            <FiRotateCcw className="text-2xl" />
           </motion.button>
 
           <motion.button
@@ -273,11 +308,11 @@ const MusicPlayer = ({ track, onClose }: MusicPlayerProps) => {
 
           <motion.button
             whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}
-            onMouseEnter={() => showTooltip('بعدی')} onMouseLeave={hideTooltip}
-            className="p-2 text-gray-400 hover:text-white transition-colors disabled:opacity-50"
-            disabled
+            onClick={handleForward}
+            onMouseEnter={() => showTooltip('۵ ثانیه جلو')} onMouseLeave={hideTooltip}
+            className="p-2 text-gray-400 hover:text-white transition-colors"
           >
-            <FiSkipForward className="text-2xl transform scale-x-[-1]" />
+            <FiRotateCw className="text-2xl" />
           </motion.button>
         </div>
 
