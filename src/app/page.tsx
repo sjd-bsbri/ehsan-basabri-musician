@@ -7,17 +7,27 @@ import WorksSection from '../app/components/WorksSection'
 import AboutSection from '../app/components/AboutSection'
 import ResumeSection from '../app/components/ResumeSection'
 import ContactSection from '../app/components/ContactSection'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion'
 import { FiArrowUp } from 'react-icons/fi'
 
 export default function Home() {
   const [showScrollTop, setShowScrollTop] = useState(false)
 
+  // استفاده از هوک‌های framer-motion برای انیمیشن نرم
+  const { scrollYProgress } = useScroll();
+  const pathLength = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
   useEffect(() => {
     const handleScroll = () => {
+      // نمایش دکمه بعد از مقداری اسکرول
       setShowScrollTop(window.scrollY > 300)
     }
-    window.addEventListener('scroll', handleScroll)
+    
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
@@ -50,21 +60,55 @@ export default function Home() {
         </div>
       </footer>
 
-      {/* دکمه بازگشت به بالا */}
+      {/* دکمه بازگشت به بالا با نمایشگر پیشرفت اسکرول */}
       <AnimatePresence>
         {showScrollTop && (
-          <motion.button
+          <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            onClick={scrollToTop}
-            className="fixed bottom-6 sm:bottom-8 left-4 sm:left-6 lg:left-8 p-3 sm:p-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full text-white shadow-lg hover:shadow-xl transition-all z-40"
-            aria-label="بازگشت به بالا"
+            className="fixed bottom-6 sm:bottom-8 left-4 sm:left-6 lg:left-8 z-40"
           >
-            <FiArrowUp className="w-5 h-5 sm:w-6 sm:h-6" />
-          </motion.button>
+            <button
+              onClick={scrollToTop}
+              className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gray-900/50 backdrop-blur-sm flex items-center justify-center text-white shadow-lg hover:bg-gray-900/70 transition-all focus:outline-none"
+              aria-label="بازگشت به بالا"
+            >
+              <FiArrowUp className="w-6 h-6 z-10" />
+              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100">
+                {/* پس‌زمینه حلقه */}
+                <circle
+                  cx="50"
+                  cy="50"
+                  r="45"
+                  fill="transparent"
+                  stroke="#ffffff"
+                  strokeOpacity="0.1"
+                  strokeWidth="8"
+                />
+                {/* حلقه پیشرفت */}
+                <motion.circle
+                  cx="50"
+                  cy="50"
+                  r="45"
+                  fill="transparent"
+                  stroke="url(#progressGradient)"
+                  strokeWidth="8"
+                  strokeLinecap="round"
+                  className="transform -rotate-90 origin-center"
+                  style={{ pathLength }} // استفاده مستقیم از مقدار انیمیت شده
+                />
+                <defs>
+                  <linearGradient id="progressGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stopColor="#a855f7" />
+                    <stop offset="100%" stopColor="#ec4899" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </button>
+          </motion.div>
         )}
       </AnimatePresence>
     </main>
