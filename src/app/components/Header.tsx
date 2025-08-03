@@ -2,9 +2,46 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FiMenu, FiX, FiMusic, FiHome, FiUser, FiMail, FiFileText } from 'react-icons/fi'
+import { FiX, FiMusic, FiHome, FiUser, FiMail, FiFileText } from 'react-icons/fi'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation' 
+
+// کامپوننت جدید برای آیکون اکولایزر
+const EqualizerIcon = ({ isOpen }: { isOpen: boolean }) => {
+  return (
+    <motion.div
+      className="w-6 h-6 flex flex-col justify-between"
+      animate={isOpen ? "open" : "closed"}
+    >
+      <motion.span
+        className="block h-0.5 bg-current"
+        variants={{
+          closed: { width: '100%' },
+          open: { width: '80%' }
+        }}
+        transition={{ duration: 0.3 }}
+      />
+      <motion.span
+        className="block h-0.5 bg-current"
+        variants={{
+          closed: { width: '60%' },
+          open: { width: '100%' }
+        }}
+        transition={{ duration: 0.3 }}
+      />
+      <motion.span
+        className="block h-0.5 bg-current"
+        variants={{
+          closed: { width: '100%' },
+          open: { width: '60%' }
+        }}
+        transition={{ duration: 0.3 }}
+      />
+    </motion.div>
+  );
+};
+
+
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
@@ -83,13 +120,23 @@ const Header = () => {
               })}
             </ul>
 
-            {/* دکمه منوی موبایل */}
+            {/* دکمه منوی موبایل با آیکون جدید */}
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="md:hidden p-2 text-2xl text-gray-300 hover:text-white transition-colors"
               aria-label="منوی موبایل"
             >
-              {isOpen ? <FiX /> : <FiMenu />}
+              <AnimatePresence initial={false} mode="wait">
+                <motion.div
+                  key={isOpen ? "close" : "open"}
+                  initial={{ rotate: 45, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: -45, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {isOpen ? <FiX /> : <EqualizerIcon isOpen={isOpen} />}
+                </motion.div>
+              </AnimatePresence>
             </button>
           </div>
         </nav>
@@ -130,7 +177,7 @@ const Header = () => {
                         <Link
                             href={href}
                             onClick={() => setIsOpen(false)}
-                            className="flex items-center gap-3 py-3 px-4 rounded-lg text-gray-300 hover:text-white hover:bg-white/5 transition-all"
+                            className="flex items-center gap-3 py-3 px-4 rounded-lg text-gray-300  transition-all"
                         >
                             <item.icon className="text-xl" />
                             <span className="text-lg">{item.title}</span>
