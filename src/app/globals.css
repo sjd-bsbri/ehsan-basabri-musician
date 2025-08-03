@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: 'Vazir', sans-serif !important;
+}
+
+@layer base {
+  body {
+    @apply bg-gray-950 text-gray-100;
+  }
+  
+  /* تنظیم اندازه فونت پایه برای ریسپانسیو */
+  html {
+    font-size: 14px;
+  }
+  
+  @media (min-width: 640px) {
+    html {
+      font-size: 15px;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    html {
+      font-size: 16px;
+    }
+  }
+}
+
+@layer components {
+  .gradient-text {
+    @apply bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent;
+  }
+  
+  .glass-effect {
+    @apply backdrop-blur-lg bg-white/5 border border-white/10;
+  }
+  
+  .hover-scale {
+    @apply transition-transform duration-300 hover:scale-105;
+  }
+  
+  /* Container ریسپانسیو */
+  .container-custom {
+    @apply w-full px-4 mx-auto;
+    max-width: 100%;
+  }
+  
+  @media (min-width: 640px) {
+    .container-custom {
+      @apply px-6;
+      max-width: 640px;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .container-custom {
+      max-width: 768px;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .container-custom {
+      @apply px-8;
+      max-width: 1024px;
+    }
+  }
+  
+  @media (min-width: 1280px) {
+    .container-custom {
+      max-width: 1280px;
+    }
+  }
+}
+
+/* انیمیشن موج صوتی */
+@keyframes soundWave {
+  0% { transform: scaleY(1); }
+  50% { transform: scaleY(1.5); }
+  100% { transform: scaleY(1); }
+}
+
+.sound-wave {
+  animation: soundWave 1s ease-in-out infinite;
+}
+
+/* اسکرول بار سفارشی ریسپانسیو */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+@media (min-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+::-webkit-scrollbar-track {
+  background: #0f0f0f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #a855f7, #ec4899);
+  border-radius: 4px;
+}
+
+/* جلوگیری از اسکرول افقی در موبایل */
+@media (max-width: 640px) {
+  body {
+    overflow-x: hidden;
+  }
+}
