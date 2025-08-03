@@ -1,25 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { FiAward, FiMusic, FiUsers, FiStar } from 'react-icons/fi'
 import Image from 'next/image'
-
+import { stats, skills } from '../../data/about' 
 const AboutSection = () => {
-  const stats = [
-    { icon: FiMusic, value: '۱۵۰+', label: 'قطعه موسیقی' },
-    { icon: FiAward, value: '۲۵', label: 'جایزه و افتخار' },
-    { icon: FiUsers, value: '۵۰+', label: 'همکاری‌های هنری' },
-    { icon: FiStar, value: '۱۲', label: 'سال تجربه' },
-  ]
-
-  const skills = [
-    { name: 'آهنگسازی', level: 95 },
-    { name: 'تنظیم موسیقی', level: 90 },
-    { name: 'میکس و مسترینگ', level: 85 },
-    { name: 'نوازندگی پیانو', level: 88 },
-    { name: 'موسیقی فیلم', level: 92 },
-  ]
-
   return (
     <section id="about" className="py-16 sm:py-20 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-900/10 to-transparent" />

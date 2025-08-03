@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FiX, FiMusic, FiHome, FiUser, FiMail, FiFileText } from 'react-icons/fi'
+import { FiX, FiMusic } from 'react-icons/fi'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation' 
+import { menuItems } from '../../data/menu' 
 
 const EqualizerIcon = ({ isOpen }: { isOpen: boolean }) => {
   return (
@@ -64,14 +65,6 @@ const Header = () => {
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [])
-
-  const menuItems = [
-    { title: 'خانه', icon: FiHome, href: '#home' },
-    { title: 'آثار', icon: FiMusic, href: '#works' },
-    { title: 'درباره من', icon: FiUser, href: '#about' },
-    { title: 'رزومه', icon: FiFileText, href: '#resume' },
-    { title: 'تماس', icon: FiMail, href: '#contact' },
-  ]
 
   return (
     <>

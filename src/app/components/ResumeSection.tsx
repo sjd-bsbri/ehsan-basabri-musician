@@ -2,68 +2,9 @@
 
 import { motion } from 'framer-motion'
 import { FiBriefcase, FiAward, FiBook, FiCalendar } from 'react-icons/fi'
+import { experiences, education, awards } from '../../data/resume' 
 
 const ResumeSection = () => {
-  const experiences = [
-    {
-      title: 'آهنگساز ارشد',
-      company: 'استودیو موسیقی ملل',
-      period: '۱۴۰۰ - اکنون',
-      description: 'آهنگسازی و تنظیم موسیقی برای پروژه‌های سینمایی و تلویزیونی',
-      highlights: ['موسیقی فیلم "کویر"', 'موسیقی سریال "راز شب"', 'تنظیم آلبوم "رویاها"']
-    },
-    {
-      title: 'آهنگساز مستقل',
-      company: 'فریلنسر',
-      period: '۱۳۹۵ - ۱۴۰۰',
-      description: 'همکاری با هنرمندان مختلف در پروژه‌های متنوع موسیقی',
-      highlights: ['بیش از ۵۰ پروژه موفق', 'همکاری با ۲۰ خواننده مطرح', 'تولید ۳ آلبوم کامل']
-    },
-    {
-      title: 'دستیار آهنگساز',
-      company: 'استودیو هارمونی',
-      period: '۱۳۹۲ - ۱۳۹۵',
-      description: 'کمک در تنظیم و میکس موسیقی‌های مختلف',
-      highlights: ['یادگیری تکنیک‌های حرفه‌ای', 'کار با تجهیزات مدرن', 'مشارکت در ۱۵ پروژه']
-    }
-  ]
-
-  const education = [
-    {
-      degree: 'کارشناسی ارشد موسیقی',
-      institution: 'دانشگاه هنر تهران',
-      period: '۱۳۹۰ - ۱۳۹۲',
-      description: 'تخصص در آهنگسازی و تئوری موسیقی'
-    },
-    {
-      degree: 'کارشناسی موسیقی',
-      institution: 'دانشگاه تهران',
-      period: '۱۳۸۶ - ۱۳۹۰',
-      description: 'گرایش نوازندگی پیانو'
-    }
-  ]
-
-  const awards = [
-    {
-      title: 'بهترین موسیقی فیلم',
-      event: 'جشنواره فیلم فجر',
-      year: '۱۴۰۱',
-      work: 'فیلم سینمایی "کویر"'
-    },
-    {
-      title: 'آهنگساز برتر سال',
-      event: 'انجمن موسیقی ایران',
-      year: '۱۴۰۰',
-      work: 'مجموعه آثار سال ۱۴۰۰'
-    },
-    {
-      title: 'بهترین تنظیم موسیقی',
-      event: 'جشن موسیقی ما',
-      year: '۱۳۹۹',
-      work: 'آلبوم "صدای سکوت"'
-    }
-  ]
-
   return (
     <section id="resume" className="py-20">
       <div className="container mx-auto px-4">
