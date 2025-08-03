@@ -6,7 +6,6 @@ import { FiX, FiMusic, FiHome, FiUser, FiMail, FiFileText } from 'react-icons/fi
 import Link from 'next/link'
 import { usePathname } from 'next/navigation' 
 
-// کامپوننت جدید برای آیکون اکولایزر
 const EqualizerIcon = ({ isOpen }: { isOpen: boolean }) => {
   return (
     <motion.div
