@@ -4,10 +4,11 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FiMenu, FiX, FiMusic, FiHome, FiUser, FiMail, FiFileText } from 'react-icons/fi'
 import Link from 'next/link'
-
+import { usePathname } from 'next/navigation' 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const pathname = usePathname() 
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,29 +53,34 @@ const Header = () => {
               whileHover={{ scale: 1.05 }}
               className="flex items-center gap-2 sm:gap-3"
             >
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
-                <FiMusic className="text-white text-lg sm:text-xl" />
-              </div>
-              <h1 className="text-xl sm:text-2xl font-bold gradient-text">آهنگساز</h1>
+                <Link href="/" className="flex items-center gap-2 sm:gap-3">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
+                        <FiMusic className="text-white text-lg sm:text-xl" />
+                    </div>
+                    <h1 className="text-xl sm:text-2xl font-bold gradient-text">آهنگساز</h1>
+                </Link>
             </motion.div>
 
             {/* منوی دسکتاپ */}
             <ul className="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-8">
-              {menuItems.map((item, index) => (
-                <motion.li
-                  key={index}
-                  whileHover={{ y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Link
-                    href={item.href}
-                    className="flex items-center gap-1.5 lg:gap-2 text-sm lg:text-base text-gray-300 hover:text-white transition-colors"
-                  >
-                    <item.icon className="text-base lg:text-lg" />
-                    <span>{item.title}</span>
-                  </Link>
-                </motion.li>
-              ))}
+              {menuItems.map((item, index) => {
+                const href = pathname === '/' ? item.href : `/${item.href}`;
+                return (
+                    <motion.li
+                    key={index}
+                    whileHover={{ y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                    >
+                    <Link
+                        href={href}
+                        className="flex items-center gap-1.5 lg:gap-2 text-sm lg:text-base text-gray-300 hover:text-white transition-colors"
+                    >
+                        <item.icon className="text-base lg:text-lg" />
+                        <span>{item.title}</span>
+                    </Link>
+                    </motion.li>
+                )
+              })}
             </ul>
 
             {/* دکمه منوی موبایل */}
@@ -111,32 +117,27 @@ const Header = () => {
               className="fixed top-0 right-0 bottom-0 w-full max-w-xs bg-gray-900/95 backdrop-blur-xl z-50 md:hidden"
             >
               <div className="p-6">
-                {/* <button
-                  onClick={() => setIsOpen(false)}
-                  className="mb-8 text-2xl text-gray-300 hover:text-white transition-colors"
-                  aria-label="بستن منو"
-                >
-                  <FiX />
-                </button> */}
-                
                 <ul className="space-y-2">
-                  {menuItems.map((item, index) => (
-                    <motion.li
-                      key={index}
-                      initial={{ x: 50, opacity: 0 }}
-                      animate={{ x: 0, opacity: 1 }}
-                      transition={{ delay: index * 0.1 }}
-                    >
-                      <Link
-                        href={item.href}
-                        onClick={() => setIsOpen(false)}
-                        className="flex items-center gap-3 py-3 px-4 rounded-lg text-gray-300 hover:text-white hover:bg-white/5 transition-all"
-                      >
-                        <item.icon className="text-xl" />
-                        <span className="text-lg">{item.title}</span>
-                      </Link>
-                    </motion.li>
-                  ))}
+                  {menuItems.map((item, index) => {
+                    const href = pathname === '/' ? item.href : `/${item.href}`;
+                    return (
+                        <motion.li
+                        key={index}
+                        initial={{ x: 50, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: index * 0.1 }}
+                        >
+                        <Link
+                            href={href}
+                            onClick={() => setIsOpen(false)}
+                            className="flex items-center gap-3 py-3 px-4 rounded-lg text-gray-300 hover:text-white hover:bg-white/5 transition-all"
+                        >
+                            <item.icon className="text-xl" />
+                            <span className="text-lg">{item.title}</span>
+                        </Link>
+                        </motion.li>
+                    )
+                  })}
                 </ul>
               </div>
             </motion.div>
