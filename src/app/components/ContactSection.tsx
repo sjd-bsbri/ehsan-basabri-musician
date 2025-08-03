@@ -2,16 +2,17 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { 
-  FiMail, 
-  FiPhone, 
-  FiMapPin, 
+import {
+  FiMail,
+  FiPhone,
+  FiMapPin,
   FiSend,
   FiInstagram,
   FiTwitter,
   FiLinkedin,
-  FiYoutube
+  FiYoutube,
 } from 'react-icons/fi'
+import { FaTelegramPlane } from 'react-icons/fa' 
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -49,7 +50,7 @@ const ContactSection = () => {
     {
       icon: FiMapPin,
       title: 'آدرس',
-      value: 'مشهد، خیابان ولیعصر',
+      value: 'تهران، خیابان ولیعصر',
       link: '#'
     }
   ]
@@ -58,13 +59,14 @@ const ContactSection = () => {
     { icon: FiInstagram, link: '#', color: 'hover:text-pink-500' },
     { icon: FiTwitter, link: '#', color: 'hover:text-blue-400' },
     { icon: FiLinkedin, link: '#', color: 'hover:text-blue-600' },
-    { icon: FiYoutube, link: '#', color: 'hover:text-red-500' }
+    { icon: FiYoutube, link: '#', color: 'hover:text-red-500' },
+    { icon: FaTelegramPlane, link: '#', color: 'hover:text-blue-500' } // آیکون تلگرام جایگزین شد
   ]
 
   return (
     <section id="contact" className="py-16 sm:py-20 relative">
       <div className="absolute inset-0 bg-gradient-to-t from-purple-900/20 to-transparent" />
-      
+
       <div className="container-custom relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
