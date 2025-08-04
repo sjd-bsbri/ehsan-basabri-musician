@@ -4,15 +4,15 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import MusicPlayer from './MusicPlayer'
 import { FiMusic, FiCalendar, FiClock, FiX } from 'react-icons/fi'
-import { categories, tracks } from '../../data/works' 
+import { categories, tracks } from '../../data/works'
 
 const WorksSection = () => {
   const [selectedCategory, setSelectedCategory] = useState('همه')
   const [selectedTrack, setSelectedTrack] = useState<any>(null)
   const [showPlayerModal, setShowPlayerModal] = useState(false)
 
-  const filteredTracks = selectedCategory === 'همه' 
-    ? tracks 
+  const filteredTracks = selectedCategory === 'همه'
+    ? tracks
     : tracks.filter(track => track.category === selectedCategory)
 
   const handleTrackSelect = (track: any) => {
@@ -21,6 +21,12 @@ const WorksSection = () => {
       setShowPlayerModal(true)
     }
   }
+
+  const handleClosePlayer = () => {
+    setShowPlayerModal(false);
+    setSelectedTrack(null);
+  }
+
 
   return (
     <section id="works" className="py-16 sm:py-20">
@@ -50,11 +56,10 @@ const WorksSection = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setSelectedCategory(category)}
-              className={`px-3 sm:px-5 lg:px-6 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm lg:text-base transition-all ${
-                selectedCategory === category
+              className={`px-3 sm:px-5 lg:px-6 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm lg:text-base transition-all ${selectedCategory === category
                   ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white'
                   : 'glass-effect text-gray-300 hover:text-white'
-              }`}
+                }`}
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: index * 0.1 }}
@@ -76,7 +81,7 @@ const WorksSection = () => {
         )}
 
         {/* لیست آثار */}
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -95,8 +100,8 @@ const WorksSection = () => {
             >
               <div className="flex items-start gap-3 sm:gap-4 mb-3 sm:mb-4">
                 <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-lg overflow-hidden flex-shrink-0">
-                  <img 
-                    src={track.cover} 
+                  <img
+                    src={track.cover}
                     alt={track.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                   />
@@ -104,7 +109,7 @@ const WorksSection = () => {
                     <FiMusic className="text-white text-xl sm:text-2xl" />
                   </div>
                 </div>
-                
+
                 <div className="flex-1 min-w-0">
                   <h3 className="font-bold text-base sm:text-lg text-white mb-1 group-hover:text-purple-400 transition-colors line-clamp-1">
                     {track.title}
@@ -122,11 +127,11 @@ const WorksSection = () => {
                   </div>
                 </div>
               </div>
-              
+
               <p className="text-xs sm:text-sm text-gray-400 line-clamp-2 mb-3 sm:mb-4">
                 {track.description}
               </p>
-              
+
               <div className="pt-3 sm:pt-4 border-t border-white/10">
                 <span className="text-xs px-2 sm:px-3 py-1 rounded-full bg-purple-500/20 text-purple-400">
                   {track.category}
@@ -145,7 +150,7 @@ const WorksSection = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => setShowPlayerModal(false)}
+              onClick={handleClosePlayer}
               className="fixed inset-0 bg-black/80 z-40 md:hidden"
             />
             <motion.div
@@ -155,9 +160,9 @@ const WorksSection = () => {
               transition={{ type: 'spring', damping: 25 }}
               className="fixed bottom-0 left-0 right-0 z-50 md:hidden"
             >
-              <MusicPlayer 
-                track={selectedTrack} 
-                onClose={() => setShowPlayerModal(false)}
+              <MusicPlayer
+                track={selectedTrack}
+                onClose={handleClosePlayer}
               />
             </motion.div>
           </>

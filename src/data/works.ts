@@ -22,7 +22,7 @@ export const tracks = [
     category: 'موسیقی فیلم',
     year: '1401',
     cover: "/images/ehsan1.jpg",
-    url: '/audio/track1.mp3',
+    url: '/audio/track2.mp3',
     description: 'موسیقی متن فیلم سینمایی کویر'
   },
   // اضافه کردن آثار بیشتر...

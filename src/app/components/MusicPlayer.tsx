@@ -95,19 +95,33 @@ const MusicPlayer = ({ track, onClose }: MusicPlayerProps) => {
   }, [isRepeat])
 
   useEffect(() => {
-    const audio = audioRef.current
+    const audio = audioRef.current;
     if (audio) {
-      audio.play().then(() => setIsPlaying(true)).catch(e => console.error("Autoplay failed", e))
-      audio.addEventListener('timeupdate', handleTimeUpdate)
-      audio.addEventListener('loadedmetadata', handleLoadedMetadata)
-      audio.addEventListener('ended', handleSongEnd)
-      return () => {
-        audio.removeEventListener('timeupdate', handleTimeUpdate)
-        audio.removeEventListener('loadedmetadata', handleLoadedMetadata)
-        audio.removeEventListener('ended', handleSongEnd)
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          setIsPlaying(true);
+        }).catch(error => {
+          if (error.name !== 'AbortError') {
+            console.error("Autoplay failed:", error);
+            setIsPlaying(false);
+          }
+        });
       }
+
+      audio.addEventListener('timeupdate', handleTimeUpdate);
+      audio.addEventListener('loadedmetadata', handleLoadedMetadata);
+      audio.addEventListener('ended', handleSongEnd);
+
+      // تابع پاک‌سازی
+      return () => {
+        audio.pause();
+        audio.removeEventListener('timeupdate', handleTimeUpdate);
+        audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
+        audio.removeEventListener('ended', handleSongEnd);
+      };
     }
-  }, [track.url, handleTimeUpdate, handleLoadedMetadata, handleSongEnd])
+  }, [track.url, handleTimeUpdate, handleLoadedMetadata, handleSongEnd]);
 
   const handlePlayPause = () => {
     if (audioRef.current) {
