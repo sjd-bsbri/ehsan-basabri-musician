@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Header from '../app/components/Header'
 import HeroSection from '../app/components/HeroSection'
 import WorksSection from '../app/components/WorksSection'
+import VideoSection from '../app/components/VideoSection'
 import AboutSection from '../app/components/AboutSection'
 import ResumeSection from '../app/components/ResumeSection'
 import ContactSection from '../app/components/ContactSection'
@@ -26,7 +27,7 @@ export default function Home() {
       // نمایش دکمه بعد از مقداری اسکرول
       setShowScrollTop(window.scrollY > 300)
     }
-    
+
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -38,7 +39,7 @@ export default function Home() {
   return (
     <main className="min-h-screen overflow-x-hidden">
       <Header />
-      
+
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -46,6 +47,7 @@ export default function Home() {
       >
         <HeroSection />
         <WorksSection />
+        <VideoSection />
         <AboutSection />
         <ResumeSection />
         <ContactSection />

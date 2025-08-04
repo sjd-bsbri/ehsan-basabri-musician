@@ -41,7 +41,6 @@ const EqualizerIcon = ({ isOpen }: { isOpen: boolean }) => {
   );
 };
 
-
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
@@ -55,7 +54,6 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // بستن منو هنگام تغییر سایز
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) {
@@ -65,6 +63,16 @@ const Header = () => {
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [])
+
+  const getLinkHref = (href: string) => {
+    if (!href.startsWith('#')) {
+      return href;
+    }
+    if (pathname !== '/') {
+      return `/${href}`;
+    }
+    return href;
+  };
 
   return (
     <>
@@ -92,27 +100,24 @@ const Header = () => {
 
             {/* منوی دسکتاپ */}
             <ul className="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-8">
-              {menuItems.map((item, index) => {
-                const href = pathname === '/' ? item.href : `/${item.href}`;
-                return (
-                    <motion.li
-                    key={index}
-                    whileHover={{ y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                    >
-                    <Link
-                        href={href}
-                        className="flex items-center gap-1.5 lg:gap-2 text-sm lg:text-base text-gray-300 hover:text-white transition-colors"
-                    >
-                        <item.icon className="text-base lg:text-lg" />
-                        <span>{item.title}</span>
-                    </Link>
-                    </motion.li>
-                )
-              })}
+              {menuItems.map((item, index) => (
+                <motion.li
+                  key={index}
+                  whileHover={{ y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Link
+                    href={getLinkHref(item.href)}
+                    className="flex items-center gap-1.5 lg:gap-2 text-sm lg:text-base text-gray-300 hover:text-white transition-colors"
+                  >
+                    <item.icon className="text-base lg:text-lg" />
+                    <span>{item.title}</span>
+                  </Link>
+                </motion.li>
+              ))}
             </ul>
 
-            {/* دکمه منوی موبایل با آیکون جدید */}
+            {/* دکمه منوی موبایل */}
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="md:hidden p-2 text-2xl text-gray-300 hover:text-white transition-colors"
@@ -138,7 +143,6 @@ const Header = () => {
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* پس‌زمینه تاریک */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -147,7 +151,6 @@ const Header = () => {
               className="fixed inset-0 bg-black/70 z-40 md:hidden"
             />
             
-            {/* منوی کشویی */}
             <motion.div
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
@@ -157,26 +160,23 @@ const Header = () => {
             >
               <div className="p-6">
                 <ul className="space-y-2">
-                  {menuItems.map((item, index) => {
-                    const href = pathname === '/' ? item.href : `/${item.href}`;
-                    return (
-                        <motion.li
-                        key={index}
-                        initial={{ x: 50, opacity: 0 }}
-                        animate={{ x: 0, opacity: 1 }}
-                        transition={{ delay: index * 0.1 }}
-                        >
-                        <Link
-                            href={href}
-                            onClick={() => setIsOpen(false)}
-                            className="flex items-center gap-3 py-3 px-4 rounded-lg text-gray-300  transition-all"
-                        >
-                            <item.icon className="text-xl" />
-                            <span className="text-lg">{item.title}</span>
-                        </Link>
-                        </motion.li>
-                    )
-                  })}
+                  {menuItems.map((item, index) => (
+                    <motion.li
+                      key={index}
+                      initial={{ x: 50, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ delay: index * 0.1 }}
+                    >
+                      <Link
+                        href={getLinkHref(item.href)}
+                        onClick={() => setIsOpen(false)}
+                        className="flex items-center gap-3 py-3 px-4 rounded-lg text-gray-300 transition-all"
+                      >
+                        <item.icon className="text-xl" />
+                        <span className="text-lg">{item.title}</span>
+                      </Link>
+                    </motion.li>
+                  ))}
                 </ul>
               </div>
             </motion.div>
