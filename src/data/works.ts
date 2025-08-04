@@ -9,8 +9,8 @@ export const tracks = [
     duration: '4:32',
     category: 'آلبوم',
     year: '1402',
-    cover: "/images/ehsan2.jpg",
-    url: '/audio/track1.mp3',
+    cover: "/ehsan-basabri-musician/images/ehsan2.jpg",
+    url: '/ehsan-basabri-musician/audio/track1.mp3',
     description: 'قطعه‌ای آرامش‌بخش با الهام از طبیعت'
   },
   {
@@ -21,8 +21,8 @@ export const tracks = [
     duration: '3:45',
     category: 'موسیقی فیلم',
     year: '1401',
-    cover: "/images/ehsan1.jpg",
-    url: '/audio/track2.mp3',
+    cover: "/ehsan-basabri-musician/images/ehsan1.jpg",
+    url: '/ehsan-basabri-musician/audio/track2.mp3',
     description: 'موسیقی متن فیلم سینمایی کویر'
   },
   // اضافه کردن آثار بیشتر...

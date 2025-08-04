@@ -161,7 +161,7 @@ const HeroSection = () => {
               <div className="relative glass-effect rounded-3xl p-4 sm:p-6 lg:p-8 h-full flex items-center justify-center">
                 <div className="relative w-full h-full max-w-[250px] sm:max-w-[300px] md:max-w-[350px] lg:max-w-[400px] mx-auto">
                   <Image
-                    src="/images/ehsan2.jpg"
+                    src="/ehsan-basabri-musician/images/ehsan2.jpg"
                     alt="آهنگساز"
                     fill
                     className="rounded-2xl object-cover shadow-2xl"
