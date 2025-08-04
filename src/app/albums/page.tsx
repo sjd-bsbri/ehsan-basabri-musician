@@ -98,11 +98,11 @@ export default function AlbumsPage() {
                         alt={album.title}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/80 to-transparent opacity-0 group-hover:opacity-100 group-hover:scale-110  transition-opacity flex items-center justify-center">
                         <motion.div
                           initial={{ scale: 0 }}
                           whileInView={{ scale: 1 }}
-                          className="p-4 bg-white/20 backdrop-blur-sm rounded-full"
+                          className="p-4 bg-white/20 backdrop-blur-sm rounded-full "
                         >
                           <FiPlay className="text-white text-3xl translate-x-0.5" />
                         </motion.div>

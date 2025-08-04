@@ -25,7 +25,7 @@ export const contactInfo = [
   {
     icon: FiMapPin,
     title: 'آدرس',
-    value: 'تهران، خیابان ولیعصر',
+    value: 'مشهد، خیابان مجد',
     link: '#'
   }
 ]
