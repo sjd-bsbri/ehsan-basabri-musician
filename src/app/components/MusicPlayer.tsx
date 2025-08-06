@@ -218,14 +218,14 @@ const MusicPlayer = ({ track, onClose }: MusicPlayerProps) => {
         )}
       </AnimatePresence>
 
-      {onClose && (
+      {/* {onClose && (
         <button
           onClick={onClose}
           className="absolute top-3 left-3 p-2 text-gray-400 hover:text-white transition-colors z-10"
         >
           <FiX />
         </button>
-      )}
+      )} */}
 
       <div className="flex items-center gap-4">
         <motion.div layoutId={`track-cover-${track.id}`} className="relative w-16 h-16 rounded-md overflow-hidden shadow-lg flex-shrink-0">
