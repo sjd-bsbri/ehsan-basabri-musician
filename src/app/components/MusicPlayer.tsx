@@ -13,7 +13,7 @@ import {
   FiHeart,
   FiRepeat,
   FiShuffle,
-  FiX
+  FiDownload,
 } from 'react-icons/fi'
 
 // Custom Hook for Tooltips
@@ -191,6 +191,15 @@ const MusicPlayer = ({ track, onClose }: MusicPlayerProps) => {
     return `${mins}:${secs.toString().padStart(2, '0')}`
   }
 
+  const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = track.url;
+    link.download = `${track.artist} - ${track.title}.mp3`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   const VolumeIcon = volume === 0 ? FiVolumeX : volume < 0.5 ? FiVolume1 : FiVolume2;
 
   return (
@@ -338,6 +347,16 @@ const MusicPlayer = ({ track, onClose }: MusicPlayerProps) => {
             }`}
         >
           <FiRepeat className="text-lg" />
+        </motion.button>
+
+        {/* دکمه دانلود جدید */}
+        <motion.button
+          whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}
+          onClick={handleDownload}
+          onMouseEnter={() => showTooltip('دانلود')} onMouseLeave={hideTooltip}
+          className="p-2 rounded-full text-gray-500 hover:text-white transition-colors"
+        >
+          <FiDownload className="text-lg" />
         </motion.button>
 
         <div className="group relative flex items-center">
