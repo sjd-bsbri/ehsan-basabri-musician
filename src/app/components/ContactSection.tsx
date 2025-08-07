@@ -128,9 +128,9 @@ const ContactSection = () => {
                 <motion.a
                   key={index}
                   href={info.link}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  // initial={{ opacity: 0, y: 20 }}
+                  // whileInView={{ opacity: 1, y: 0 }}
+                  // viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ x: 10 }}
                   className="flex items-center gap-3 sm:gap-4 glass-effect rounded-xl p-4 sm:p-6 hover:bg-white/5 transition-all group"

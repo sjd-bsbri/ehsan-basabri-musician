@@ -36,9 +36,9 @@ const ResumeSection = () => {
             {experiences.map((exp, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                // initial={{ opacity: 0, y: 20 }}
+                // whileInView={{ opacity: 1, y: 0 }}
+                // viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 className="glass-effect rounded-xl p-6 hover:bg-white/5 transition-all"
               >
@@ -82,9 +82,9 @@ const ResumeSection = () => {
               {education.map((edu, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  // initial={{ opacity: 0, y: 20 }}
+                  // whileInView={{ opacity: 1, y: 0 }}
+                  // viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
                   className="glass-effect rounded-xl p-6 mb-4 hover:bg-white/5 transition-all"
                 >
@@ -111,9 +111,9 @@ const ResumeSection = () => {
               {awards.map((award, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  // initial={{ opacity: 0, y: 20 }}
+                  // whileInView={{ opacity: 1, y: 0 }}
+                  // viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
                   className="glass-effect rounded-xl p-6 mb-4 hover:bg-white/5 transition-all"
                 >

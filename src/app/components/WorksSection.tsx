@@ -60,8 +60,8 @@ const WorksSection = () => {
                   ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white'
                   : 'glass-effect text-gray-300 hover:text-white'
                 }`}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
+              // initial={{ opacity: 0, x: -20 }}
+              // animate={{ opacity: 1, x: 0 }}
               transition={{ delay: index * 0.1 }}
             >
               {category}
@@ -90,9 +90,9 @@ const WorksSection = () => {
           {filteredTracks.map((track, index) => (
             <motion.div
               key={track.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              // initial={{ opacity: 0, y: 20 }}
+              // whileInView={{ opacity: 1, y: 0 }}
+              // viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               whileHover={{ y: -5 }}
               onClick={() => handleTrackSelect(track)}
@@ -157,7 +157,7 @@ const WorksSection = () => {
               initial={{ y: '100%' }}
               animate={{ y: 0 }}
               exit={{ y: '100%' }}
-              transition={{ type: 'spring', damping: 25 }}
+              transition={{ type: 'spring', damping: 15 }}
               className="fixed bottom-0 left-0 right-0 z-50 md:hidden"
             >
               <MusicPlayer
