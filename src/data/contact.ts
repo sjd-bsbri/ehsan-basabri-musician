@@ -32,8 +32,8 @@ export const contactInfo = [
 
 export const socialLinks = [
   { icon: FiInstagram, link: '#', color: 'hover:text-pink-500' },
-  { icon: FiTwitter, link: '#', color: 'hover:text-blue-400' },
-  { icon: FiLinkedin, link: '#', color: 'hover:text-blue-600' },
+  { icon: FaTelegramPlane, link: '#', color: 'hover:text-blue-500' },
   { icon: FiYoutube, link: '#', color: 'hover:text-red-500' },
-  { icon: FaTelegramPlane, link: '#', color: 'hover:text-blue-500' }
+  { icon: FiLinkedin, link: '#', color: 'hover:text-blue-600' },
+  { icon: FiTwitter, link: '#', color: 'hover:text-blue-400' },
 ]
