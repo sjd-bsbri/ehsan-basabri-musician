@@ -2,8 +2,9 @@ import './globals.css'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'پورتفولیو آهنگساز',
-  description: 'پورتفولیو حرفه‌ای آهنگساز',
+  title: '   احسان باصبری | خلق موسیقی‌های ماندگار',
+  description: 'به دنیای موسیقی من خوش آمدید. کاوش در مجموعه‌ای از احساسی‌ترین و قدرتمندترین آثار من. هر قطعه، داستانی‌ست که با نت‌ها روایت می‌شود. برای جان بخشیدن به پروژه خود با من تماس بگیرید.',
+
 }
 
 export default function RootLayout({
