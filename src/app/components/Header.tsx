@@ -94,7 +94,7 @@ const Header = () => {
                     <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
                         <FiMusic className="text-white text-lg sm:text-xl" />
                     </div>
-                    <h1 className="text-xl sm:text-2xl font-bold gradient-text">آهنگساز</h1>
+                    <h1 className="text-xl sm:text-2xl font-bold gradient-text">آخشیج</h1>
                 </Link>
             </motion.div>
 

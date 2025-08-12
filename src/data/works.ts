@@ -3,27 +3,39 @@ export const categories = ['همه', 'موسیقی فیلم', 'آلبوم', 'ت�
 export const tracks = [
   {
     id: 1,
-    title: 'رویای شبانه',
+    title: ' حماسی',
     artist: 'احسان باصبری',
-    album: 'آلبوم رویاها',
-    duration: '4:32',
+    album: 'آلبوم حماسی',
+    duration: '4:38',
     category: 'آلبوم',
-    year: '1402',
+    year: '1404',
     cover: "/ehsan-basabri-musician/images/ehsan2.jpg",
-    url: '/ehsan-basabri-musician/audio/track1.mp3',
+    url: '/ehsan-basabri-musician/audio/Hemasy.mp3',
     description: 'قطعه‌ای آرامش‌بخش با الهام از طبیعت'
   },
   {
     id: 2,
-    title: 'طلوع در کویر',
+    title: ' ماتریکس ',
     artist: 'احسان باصبری',
-    album: 'موسیقی فیلم کویر',
-    duration: '3:45',
+    album: 'موسیقی فیلم ماتریکس',
+    duration: '5:36',
     category: 'موسیقی فیلم',
-    year: '1401',
+    year: '1403',
     cover: "/ehsan-basabri-musician/images/ehsan1.jpg",
-    url: '/ehsan-basabri-musician/audio/track2.mp3',
-    description: 'موسیقی متن فیلم سینمایی کویر'
+    url: '/ehsan-basabri-musician/audio/Matrix.mp3',
+    description: 'موسیقی متن فیلم سینمایی ماتریکس'
+  },
+    {
+    id: 3,
+    title: ' انتظار ',
+    artist: 'احسان باصبری',
+    album: 'موسیقی فیلم انتظار',
+    duration: '2:21',
+    category: 'موسیقی فیلم',
+    year: '1404',
+    cover: "/ehsan-basabri-musician/images/ehsan1.jpg",
+    url: '/ehsan-basabri-musician/audio/ENTEZAR.mp3',
+    description: 'موسیقی متن فیلم سینمایی انتظار'
   },
   // اضافه کردن آثار بیشتر...
 ]
