@@ -3,7 +3,7 @@ export const categories = ['همه', 'برترین‌ها', 'جدیدترین', 
 export const samples = [
   {
     id: 1,
-    title: 'سمفونی شرق',
+    title: ' 1=1',
     artist: 'احسان باصبری',
     album: 'مجموعه سمفونی‌ها',
     duration: '3:22',
@@ -18,7 +18,7 @@ export const samples = [
   },
   {
     id: 2,
-    title: 'نوای باران',
+    title: ' سوز عشق',
     artist: 'احسان باصبری',
     album: 'آلبوم طبیعت',
     duration: '3:13',
@@ -33,7 +33,7 @@ export const samples = [
   },
   {
     id: 3,
-    title: 'رقص ستارگان',
+    title: ' دریک',
     artist: 'احسان باصبری',
     album: 'موسیقی فیلم کهکشان',
     duration: '2:42',
@@ -48,7 +48,7 @@ export const samples = [
   },
     {
     id: 4,
-    title: 'رقص ستارگان',
+    title: ' انتظار',
     artist: 'احسان باصبری',
     album: 'موسیقی فیلم کهکشان',
     duration: '2:21',
@@ -63,7 +63,7 @@ export const samples = [
   },
     {
     id: 5,
-    title: 'رقص ستارگان',
+    title: ' گنگستا',
     artist: 'احسان باصبری',
     album: 'موسیقی فیلم کهکشان',
     duration: '1:52',
@@ -78,7 +78,7 @@ export const samples = [
   },
     {
     id: 6,
-    title: 'رقص ستارگان',
+    title: ' حماسی',
     artist: 'احسان باصبری',
     album: 'موسیقی فیلم کهکشان',
     duration: '4:38',
@@ -93,7 +93,7 @@ export const samples = [
   },
     {
     id: 7,
-    title: 'رقص ستارگان',
+    title: 'حماسی2 ',
     artist: 'احسان باصبری',
     album: 'موسیقی فیلم کهکشان',
     duration: '3:38',
@@ -108,7 +108,7 @@ export const samples = [
   },
     {
     id: 8,
-    title: 'رقص ستارگان',
+    title: 'حماسی3 ',
     artist: 'احسان باصبری',
     album: 'موسیقی فیلم کهکشان',
     duration: '3:04',
@@ -123,7 +123,7 @@ export const samples = [
   },
     {
     id: 9,
-    title: 'رقص ستارگان',
+    title: 'هیپ هاپ گنگ ',
     artist: 'احسان باصبری',
     album: 'موسیقی فیلم کهکشان',
     duration: '1:58',
@@ -138,7 +138,7 @@ export const samples = [
   },
     {
     id: 10,
-    title: 'رقص ستارگان',
+    title: 'زندگی',
     artist: 'احسان باصبری',
     album: 'موسیقی فیلم کهکشان',
     duration: '4:14',
@@ -153,7 +153,7 @@ export const samples = [
   },
     {
     id: 11,
-    title: 'رقص ستارگان',
+    title: 'ماتریکس ',
     artist: 'احسان باصبری',
     album: 'موسیقی فیلم کهکشان',
     duration: '5:36',
@@ -168,7 +168,7 @@ export const samples = [
   },
     {
     id: 12,
-    title: 'رقص ستارگان',
+    title: 'قلب ',
     artist: 'احسان باصبری',
     album: 'موسیقی فیلم کهکشان',
     duration: '2:50',
