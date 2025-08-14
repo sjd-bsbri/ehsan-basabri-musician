@@ -33,7 +33,7 @@ const AboutSection = () => {
               <div className="relative glass-effect rounded-3xl p-4 sm:p-6 lg:p-8">
                 <div className="relative w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] mb-6 sm:mb-8">
                   <Image
-                  src="/ehsan-basabri-musician/images/ehsan1.jpg"
+                  src="/images/ehsan1.jpg"
                     alt="درباره من"
                     fill
                     className="rounded-2xl shadow-2xl object-cover"
