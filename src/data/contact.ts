@@ -25,7 +25,7 @@ export const contactInfo = [
   {
     icon: FiMapPin,
     title: 'آدرس',
-    value: 'مشهد، خیابان مجد',
+    value: 'قوچان',
     link: '#'
   }
 ]
