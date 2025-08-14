@@ -3,7 +3,7 @@ export const categories = ['همه', 'موسیقی فیلم', 'آلبوم', 'ت�
 export const tracks = [
   {
     id: 1,
-    title: ' حماسی',
+    title: ' جنگ جهانی1',
     artist: 'احسان باصبری',
     album: 'آلبوم حماسی',
     duration: '4:38',

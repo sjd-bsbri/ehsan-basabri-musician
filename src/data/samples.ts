@@ -78,7 +78,7 @@ export const samples = [
   },
     {
     id: 6,
-    title: ' حماسی',
+    title: ' جنگ جهانی1',
     artist: 'احسان باصبری',
     album: 'موسیقی فیلم کهکشان',
     duration: '4:38',
@@ -93,7 +93,7 @@ export const samples = [
   },
     {
     id: 7,
-    title: 'حماسی2 ',
+    title: 'جنگ جهانی2 ',
     artist: 'احسان باصبری',
     album: 'موسیقی فیلم کهکشان',
     duration: '3:38',
@@ -108,7 +108,7 @@ export const samples = [
   },
     {
     id: 8,
-    title: 'حماسی3 ',
+    title: 'جنگ جهانی3 ',
     artist: 'احسان باصبری',
     album: 'موسیقی فیلم کهکشان',
     duration: '3:04',
