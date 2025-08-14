@@ -172,19 +172,20 @@ const ContactSection = () => {
             </motion.div>
 
             {/* نقشه */}
-            <motion.div
+         <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="glass-effect rounded-xl p-1.5 sm:p-2 h-48 sm:h-56 lg:h-64 overflow-hidden"
             >
               <iframe
-    src="https://maps.google.com/maps?q=%D9%85%D8%B4%D9%87%D8%AF%20%D8%AE%DB%8C%D8%A7%D8%A8%D8%A7%D9%86%20%D9%85%D8%AC%D8%AF&t=&z=15&ie=UTF8&iwloc=&output=embed"
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d51543.89635679321!2d58.47726565!3d37.10859595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f6a61a0b3b4d45d%3A0x6b896c7384a4b2b!2sQuchan%2C%20Razavi%20Khorasan%20Province%2C%20Iran!5e0!3m2!1sen!2sde!4v1723641321764!5m2!1sen!2sde"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
                 className="rounded-lg"
               />
             </motion.div>

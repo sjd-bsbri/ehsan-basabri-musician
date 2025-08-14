@@ -9,7 +9,7 @@ export const tracks = [
     duration: '4:38',
     category: 'آلبوم',
     year: '1404',
-    cover: "/ehsan-basabri-musician/images/ehsan2.jpg",
+    cover: "/ehsan-basabri-musician/images/world-war.jpg",
     url: '/ehsan-basabri-musician/audio/Hemasy.mp3',
     description: 'قطعه‌ای آرامش‌بخش با الهام از طبیعت'
   },
@@ -33,7 +33,7 @@ export const tracks = [
     duration: '2:21',
     category: 'موسیقی فیلم',
     year: '1404',
-    cover: "/ehsan-basabri-musician/images/ehsan1.jpg",
+    cover: "/ehsan-basabri-musician/images/entezar.jpg",
     url: '/ehsan-basabri-musician/audio/ENTEZAR.mp3',
     description: 'موسیقی متن فیلم سینمایی انتظار'
   },
