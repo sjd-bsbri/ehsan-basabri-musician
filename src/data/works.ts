@@ -21,7 +21,7 @@ export const tracks = [
     duration: '5:36',
     category: 'موسیقی فیلم',
     year: '1403',
-    cover: "/ehsan-basabri-musician/images/ehsan1.jpg",
+    cover: "/ehsan-basabri-musician/images/matrix.jpg",
     url: '/ehsan-basabri-musician/audio/Matrix.mp3',
     description: 'موسیقی متن فیلم سینمایی ماتریکس'
   },

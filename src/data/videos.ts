@@ -4,8 +4,8 @@ export const videos = [
     title: "موسیقی فیلم کوتاه 'خاطره'",
     category: 'فیلم کوتاه',
     description: 'قطعه‌ای ارکسترال و احساسی که برای روایت داستان یک جدایی ساخته شده است.',
-    thumbnailUrl: '/ehsan-basabri-musician/images/ehsan1.jpg', 
-    videoUrl: '/ehsan-basabri-musician/audio/music-film.mp4', 
+    thumbnailUrl: '/ehsan-basabri-musician/images/V1-cover.jpg', 
+    videoUrl: '/ehsan-basabri-musician/audio/V1.mp4.mov', 
   },
   {
     id: 2,
