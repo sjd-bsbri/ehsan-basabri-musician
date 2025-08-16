@@ -2,10 +2,9 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { 
-  FiPlay, 
-  FiMusic, 
-  FiCalendar, 
+import {
+  FiPlay,
+  FiMusic,
   FiClock,
   FiAward,
   FiHeadphones,
@@ -17,15 +16,15 @@ import {
 import MusicPlayer from '../components/MusicPlayer'
 import Header from '../components/Header'
 import Link from 'next/link'
-import { categories, samples } from '../../data/samples' 
+import { categories, samples } from '../../data/samples'
 
 export default function SampleWorksPage() {
   const [selectedTrack, setSelectedTrack] = useState<any>(null)
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
   const [selectedCategory, setSelectedCategory] = useState('همه')
 
-  const filteredSamples = selectedCategory === 'همه' 
-    ? samples 
+  const filteredSamples = selectedCategory === 'همه'
+    ? samples
     : samples.filter(sample => sample.category === selectedCategory)
 
   return (
@@ -79,11 +78,10 @@ export default function SampleWorksPage() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
                   onClick={() => setSelectedCategory(category)}
-                  className={`px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm transition-all ${
-                    selectedCategory === category
-                      ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white'
-                      : 'glass-effect text-gray-300 hover:text-white'
-                  }`}
+                  className={`px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm transition-all ${selectedCategory === category
+                    ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white'
+                    : 'glass-effect text-gray-300 hover:text-white'
+                    }`}
                 >
                   {category}
                 </motion.button>
@@ -93,152 +91,132 @@ export default function SampleWorksPage() {
             <div className="flex gap-2">
               <button
                 onClick={() => setViewMode('grid')}
-                className={`p-2 rounded-lg transition-colors ${
-                  viewMode === 'grid' 
-                    ? 'bg-purple-500/20 text-purple-400' 
-                    : 'text-gray-400 hover:text-white'
-                }`}
+                className={`p-2 rounded-lg transition-colors ${viewMode === 'grid'
+                  ? 'bg-purple-500/20 text-purple-400'
+                  : 'text-gray-400 hover:text-white'
+                  }`}
               >
                 <FiGrid className="text-lg" />
               </button>
               <button
                 onClick={() => setViewMode('list')}
-                className={`p-2 rounded-lg transition-colors ${
-                  viewMode === 'list' 
-                    ? 'bg-purple-500/20 text-purple-400' 
-                    : 'text-gray-400 hover:text-white'
-                }`}
+                className={`p-2 rounded-lg transition-colors ${viewMode === 'list'
+                  ? 'bg-purple-500/20 text-purple-400'
+                  : 'text-gray-400 hover:text-white'
+                  }`}
               >
                 <FiList className="text-lg" />
               </button>
             </div>
           </motion.div>
 
-          {/* پلیر موسیقی */}
-          {selectedTrack && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="mb-12 max-w-4xl mx-auto"
-            >
-              <MusicPlayer track={selectedTrack} />
-              
-              {/* اطلاعات اضافی */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="mt-6 glass-effect rounded-xl p-6"
-              >
-                <h3 className="text-lg font-bold text-white mb-4">درباره این اثر</h3>
-                <p className="text-gray-300 leading-relaxed mb-4">{selectedTrack.description}</p>
-                
-                {selectedTrack.awards.length > 0 && (
-                  <div className="mt-4">
-                    <h4 className="text-white font-semibold mb-2 flex items-center gap-2">
-                      <FiAward className="text-purple-400" />
-                      جوایز و افتخارات
-                    </h4>
-                    <div className="flex flex-wrap gap-2">
-                      {selectedTrack.awards.map((award: string, index: number) => (
-                        <span
-                          key={index}
-                          className="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm"
-                        >
-                          {award}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </motion.div>
-            </motion.div>
-          )}
-
           {/* لیست آثار */}
-          <div className={viewMode === 'grid' 
-            ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6' 
+          <div className={viewMode === 'grid'
+            ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6'
             : 'space-y-4'
           }>
             {filteredSamples.map((sample, index) => (
               <motion.div
                 key={sample.id}
+                // layout
+                // transition={{ duration: 0.4, ease: "easeOut" }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                onClick={() => setSelectedTrack(sample)}
-                className={`glass-effect rounded-xl overflow-hidden hover:bg-white/5 transition-all cursor-pointer group ${
-                  viewMode === 'list' ? 'flex gap-4 p-4' : 'p-4'
-                }`}
+                className={`glass-effect rounded-xl overflow-hidden hover:bg-white/5 transition-all group`}
               >
-                {viewMode === 'grid' ? (
-                  // نمای گرید
-                  <>
-                    <div className="relative w-full h-48 mb-4 rounded-lg overflow-hidden">
-                      <img 
-                        src={sample.cover} 
-                        alt={sample.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <FiPlay className="text-white text-4xl" />
-                      </div>
-                      {sample.awards.length > 0 && (
-                        <div className="absolute top-2 left-2 p-2 bg-purple-500/80 rounded-lg">
-                          <FiAward className="text-white text-sm" />
-                        </div>
-                      )}
-                    </div>
-                    <h3 className="font-bold text-white mb-1 group-hover:text-purple-400 transition-colors">
-                      {sample.title}
-                    </h3>
-                    <p className="text-sm text-gray-400 mb-2">{sample.genre}</p>
-                    <div className="flex items-center justify-between text-xs text-gray-500">
-                      <span className="flex items-center gap-1">
-                        <FiHeadphones />
-                        {sample.plays}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <FiClock />
-                        {sample.duration}
-                      </span>
-                    </div>
-                  </>
+                {selectedTrack && selectedTrack.id === sample.id ? (
+                  <MusicPlayer
+                    track={selectedTrack}
+                    onClose={() => setSelectedTrack(null)}
+                  />
                 ) : (
-                  // نمای لیست
-                  <>
-                    <div className="relative w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
-                      <img 
-                        src={sample.cover} 
-                        alt={sample.title}
-                        className="w-full h-full object-cover"
-                      />
-                      {sample.awards.length > 0 && (
-                        <div className="absolute top-1 left-1 p-1 bg-purple-500/80 rounded">
-                          <FiAward className="text-white text-xs" />
+                  <div
+                    onClick={() => setSelectedTrack(sample)}
+                    className={`cursor-pointer w-full h-full ${viewMode === 'list' ? 'flex gap-4 p-4 items-center' : 'p-4'
+                      }`}
+                  >
+                    {viewMode === 'grid' ? (
+                      // نمای گرید
+                      <>
+                        <div className="relative w-full h-48 mb-4 rounded-lg overflow-hidden">
+                          <img
+                            src={sample.cover}
+                            alt={sample.title}
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <FiPlay className="text-white text-4xl" />
+                          </div>
+                          {sample.awards.length > 0 && (
+                            <div className="absolute top-2 left-2 p-2 bg-purple-500/80 rounded-lg">
+                              <FiAward className="text-white text-sm" />
+                            </div>
+                          )}
                         </div>
-                      )}
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-bold text-white mb-1 group-hover:text-purple-400 transition-colors">
-                        {sample.title}
-                      </h3>
-                      <p className="text-sm text-gray-400 mb-2">{sample.genre} • {sample.year}</p>
-                      <div className="flex items-center gap-4 text-xs text-gray-500">
-                        <span className="flex items-center gap-1">
-                          <FiHeadphones />
-                          {sample.plays}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <FiClock />
-                          {sample.duration}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="flex items-center">
-                      <FiPlay className="text-2xl text-gray-400 group-hover:text-white transition-colors" />
-                    </div>
-                  </>
+                        <h3 className="font-bold text-white mb-1 group-hover:text-purple-400 transition-colors">
+                          {sample.title}
+                        </h3>
+                        <p className="text-sm text-gray-400 mb-2">{sample.genre}</p>
+
+                        {/* ✨ توضیحات اضافه شد */}
+                        <p className="text-xs text-gray-500 mb-3 h-10 line-clamp-2">
+                          {sample.description}
+                        </p>
+
+                        <div className="flex items-center justify-between text-xs text-gray-500 mt-auto">
+                          <span className="flex items-center gap-1">
+                            <FiHeadphones />
+                            {sample.plays}
+                          </span>
+                          <span className="flex items-center gap-1">
+                            <FiClock />
+                            {sample.duration}
+                          </span>
+                        </div>
+                      </>
+                    ) : (
+                      // نمای لیست
+                      <>
+                        <div className="relative w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
+                          <img
+                            src={sample.cover}
+                            alt={sample.title}
+                            className="w-full h-full object-cover"
+                          />
+                          {sample.awards.length > 0 && (
+                            <div className="absolute top-1 left-1 p-1 bg-purple-500/80 rounded">
+                              <FiAward className="text-white text-xs" />
+                            </div>
+                          )}
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <h3 className="font-bold text-white mb-1 group-hover:text-purple-400 transition-colors">
+                            {sample.title}
+                          </h3>
+                          <p className="text-sm text-gray-400 mb-2">{sample.genre} • {sample.year}</p>
+
+                          {/* ✨ توضیحات اضافه شد */}
+                          <p className="text-xs text-gray-500 truncate">
+                            {sample.description}
+                          </p>
+
+                          <div className="flex items-center gap-4 text-xs text-gray-500 mt-2">
+                            <span className="flex items-center gap-1">
+                              <FiHeadphones />
+                              {sample.plays}
+                            </span>
+                            <span className="flex items-center gap-1">
+                              <FiClock />
+                              {sample.duration}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="flex items-center">
+                          <FiPlay className="text-2xl text-gray-400 group-hover:text-white transition-colors" />
+                        </div>
+                      </>
+                    )}
+                  </div>
                 )}
               </motion.div>
             ))}
@@ -264,7 +242,7 @@ export default function SampleWorksPage() {
           </motion.div>
         </div>
       </main>
-        <footer className="py-6 sm:py-8 border-t border-white/10">
+      <footer className="py-6 sm:py-8 border-t border-white/10">
         <div className="container-custom text-center">
           <p className="text-gray-400 text-sm sm:text-base">
             © ۱۴۰۴ - تمامی حقوق محفوظ است | طراحی شده با ❤️ توسط سجاد باصبری
