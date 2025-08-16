@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { FiPlay, FiHeadphones, FiMusic, FiVideo } from 'react-icons/fi' 
+import { FiPlay, FiHeadphones, FiMusic, FiVideo } from 'react-icons/fi'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -21,10 +21,10 @@ const FloatingMusicNotesAnimation = () => {
   return (
     <div className="relative w-full max-w-xs h-28 mt-8 sm:mt-12 flex items-center justify-center overflow-hidden">
       {notes.map((_, index) => {
-        const duration = Math.random() * 6 + 6; 
+        const duration = Math.random() * 6 + 6;
         const delay = Math.random() * 5;
         const x = Math.random() * 100;
-        const scale = Math.random() * 0.7 + 1.0; 
+        const scale = Math.random() * 0.7 + 1.0;
 
         return (
           <motion.div
@@ -34,12 +34,12 @@ const FloatingMusicNotesAnimation = () => {
               left: `${x}%`,
               scale: scale,
             }}
-            initial={{ 
+            initial={{
               y: 100,
-              opacity: 0 
+              opacity: 0
             }}
             animate={{
-              y: -30, 
+              y: -30,
               opacity: [0, 1, 0],
             }}
             transition={{
@@ -75,7 +75,7 @@ const HeroSection = () => {
             transition={{ duration: 0.8 }}
             className="text-center lg:text-right order-2 lg:order-1"
           >
-            <motion.h2 
+            <motion.h2
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -83,7 +83,7 @@ const HeroSection = () => {
             >
               <span className="gradient-text">احسان باصبری</span>
             </motion.h2>
-            
+
             <motion.p
               className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-300 mb-3 sm:mb-4"
               initial={{ opacity: 0, y: 20 }}
@@ -102,7 +102,6 @@ const HeroSection = () => {
               خلق ملودی‌هایی که روح را لمس می‌کنند و احساسات را به رقص در می‌آورند
             </motion.p>
 
-            {/* ***** تغییر در این قسمت اعمال شده است ***** */}
             <motion.div
               className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center lg:justify-start px-4 lg:px-0"
               initial={{ opacity: 0, y: 20 }}
@@ -119,7 +118,7 @@ const HeroSection = () => {
                   پخش نمونه کارها
                 </motion.div>
               </Link>
-              
+
               <Link href="/albums">
                 <motion.div
                   whileHover={{ scale: 1.05 }}
@@ -159,12 +158,12 @@ const HeroSection = () => {
             <div className="relative w-full h-[300px] sm:h-[400px] md:h-[450px] lg:h-[500px] xl:h-[600px]">
               <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-3xl blur-2xl" />
               <div className="relative glass-effect rounded-3xl p-4 sm:p-6 lg:p-8 h-full flex items-center justify-center">
-                <div className="relative w-full h-full max-w-[250px] sm:max-w-[300px] md:max-w-[350px] lg:max-w-[400px] mx-auto">
+                <div className="relative w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] md:w-[350px] md:h-[350px] lg:w-[400px] lg:h-[400px] mx-auto rounded-full overflow-hidden shadow-2xl">
                   <Image
                     src="/images/ehsan2.jpg"
                     alt="آهنگساز"
                     fill
-                    className="rounded-2xl object-cover shadow-2xl"
+                    className="object-cover"
                     sizes="(max-width: 640px) 250px, (max-width: 768px) 300px, (max-width: 1024px) 350px, 400px"
                     priority
                   />
