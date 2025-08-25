@@ -630,7 +630,7 @@ const MusicPlayer = ({ track, onClose }: MusicPlayerProps) => {
             )}
         </AnimatePresence>
 
-        {onClose && (
+        {/* {onClose && (
             <button
                 onClick={(e) => {
                     e.stopPropagation(); 
@@ -642,7 +642,7 @@ const MusicPlayer = ({ track, onClose }: MusicPlayerProps) => {
             >
                 <FiX />
             </button>
-        )}
+        )} */}
 
         <div className="flex items-center gap-4">
             <motion.div layoutId={`track-cover-${track.id}`} className="relative w-16 h-16 rounded-md overflow-hidden shadow-lg flex-shrink-0">
