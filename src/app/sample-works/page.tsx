@@ -375,8 +375,8 @@ export default function SampleWorksPage() {
             {filteredSamples.map((sample, index) => (
               <motion.div
                 key={sample.id}
-                // layout
-                // transition={{ duration: 0.4, ease: "easeOut" }}
+                layout
+                transition={{ duration: 0.4, ease: "easeOut" }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 className={`glass-effect rounded-xl overflow-hidden hover:bg-white/5 transition-all group`}
