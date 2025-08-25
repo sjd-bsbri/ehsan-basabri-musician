@@ -187,6 +187,8 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { FiPlay, FiHeadphones, FiMusic, FiVideo } from 'react-icons/fi'
+// import { TbMusicHeart } from "react-icons/tb";
+
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -234,6 +236,8 @@ const FloatingMusicNotesAnimation = () => {
             }}
           >
             <FiMusic />
+            {/* <TbMusicHeart /> */}
+
           </motion.div>
         );
       })}
