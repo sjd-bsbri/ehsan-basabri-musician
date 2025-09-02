@@ -13,7 +13,7 @@ export const videos = [
     category: 'مستند',
     description: 'ترکیبی از موسیقی مقامی ایرانی با تنظیم مدرن برای مستند ایران‌شناسی.',
     thumbnailUrl: '/images/ehsan2.jpg', 
-    videoUrl: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4', 
+    videoUrl: '#', 
   },
   // ویدیوهای بیشتر را می‌توانید به همین شکل اضافه کنید
 ]
